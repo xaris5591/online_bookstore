@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Books{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <img src="{{ url_for('static', filename='uploads/' + book.cover_image) }}" class="card-img-top" alt="{{ book.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text">by {{ book.author }}</p>
+                <p class="card-text">{{ book.description }}</p>
+                <p class="card-text"><strong>${{ book.price }}</strong></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
